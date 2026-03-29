@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
+
+:root {
+  --neon-pink: #FF0080;
+  --neon-yellow: #EFFF00;
+  --neon-cyan: #00FFFF;
+  --neon-orange: #FF6600;
+  --bg-dark: #0F0F1A;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --border-radius: 12px;
+  --font-main: 'Outfit', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-dark);
+  color: white;
+  font-family: var(--font-main);
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 900;
+}
+
+.neon-text {
+  text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+  color: #fff;
+}
+
+.neon-text-cyan {
+  text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+  color: #fff;
+}
+
+.btn {
+  background: var(--neon-cyan);
+  color: black;
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 900;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 0 20px var(--neon-cyan);
+}
+
+.btn-secondary {
+  background: var(--neon-pink);
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 0 20px var(--neon-pink);
+}
+
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+}
+
+.tab-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.tab {
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  border-bottom: 4px solid transparent;
+  opacity: 0.6;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.tab.active {
+  opacity: 1;
+  border-color: var(--neon-yellow);
+  color: var(--neon-yellow);
+}
+
+/* Animations */
+@keyframes ink-splash {
+  0% { transform: scale(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.ink-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0.3;
+}
+
+.splash {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: ink-splash 8s infinite alternate;
+}
+
+/* Radar Chart Customization might be needed in JS, but some base styles here */
+.chart-container {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 20px;
+  border: 2px solid var(--neon-cyan);
+}
