@@ -145,10 +145,10 @@ const MainQuiz = () => {
             {currentQ.options.map(o => (
               <button key={o.id} className="btn" onClick={() => handleAnswer(o.id)} style={{justifyContent: 'flex-start', textAlign: 'left', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', height: 'auto', padding: '1.2rem'}}>
                 <div style={{display: 'flex', alignItems: 'center', gap: '1rem', width: '100%'}}>
-                  {o.icon && <span style={{fontSize: '1.5rem'}}>{o.icon}</span>}
+                  {'icon' in o && <span style={{fontSize: '1.5rem'}}>{(o as any).icon}</span>}
                   <div style={{flex: 1}}>
                     <div style={{fontWeight: 900, color: 'var(--neon-yellow)'}}>{o.label}</div>
-                    {'description' in o && <div style={{fontSize: '0.8rem', opacity: 0.6}}>{o.description}</div>}
+                    {'description' in o && <div style={{fontSize: '0.8rem', opacity: 0.6}}>{(o as any).description}</div>}
                   </div>
                   <ChevronRight size={20} style={{opacity: 0.3}} />
                 </div>
