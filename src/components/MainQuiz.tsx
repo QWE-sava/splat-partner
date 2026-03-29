@@ -175,9 +175,22 @@ const MainQuiz = () => {
               </div>
             </div>
           </div>
-          <button className="btn btn-secondary" onClick={reset}>
-            <RefreshCcw size={20} /> もう一度診断する
-          </button>
+          <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center'}}>
+            <button className="btn" onClick={reset}>
+              <RefreshCcw size={20} /> もう一度診断する
+            </button>
+            <button 
+              className="btn" 
+              style={{background: '#000', color: '#fff', border: '1px solid #444'}}
+              onClick={() => {
+                const text = `今の気分にぴったりのブキは「${result.name}」でした！\n最強の相棒を見つけよう。`;
+                const url = 'https://splat-partner.pages.dev/';
+                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=SplatPartner,スプラ3ブキ診断`, '_blank');
+              }}
+            >
+              𝕏 で結果をシェア
+            </button>
+          </div>
         </div>
       )}
     </div>

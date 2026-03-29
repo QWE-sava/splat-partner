@@ -185,9 +185,24 @@ const StageDiagnosis = () => {
                このステージ特有の{stages.find(s => s.id === answers.stageId)?.features.includes('vertical') ? '高低差' : '地形'}を、{result.sub}と{result.special}で制圧しましょう！
              </p>
           </div>
-          <button className="btn" onClick={reset}>
-            <RefreshCw size={20} /> 他のシチュエーションで診断
-          </button>
+          <div style={{display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center'}}>
+            <button 
+              className="btn" 
+              style={{background: '#000', color: '#fff', border: '1px solid #444', width: '100%', maxWidth: '250px'}}
+              onClick={() => {
+                const ruleName = questions[0].options?.find(o => o.id === answers.rule)?.label;
+                const stageName = stages.find(s => s.id === answers.stageId)?.name;
+                const text = `${stageName} × ${ruleName} のオススメブキは「${result.name}」！`;
+                const url = 'https://splat-partner.pages.dev/';
+                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=SplatPartner,スプラ3`, '_blank');
+              }}
+            >
+              𝕏 で結果をシェア
+            </button>
+            <button className="btn btn-secondary" onClick={reset} style={{width: '100%', maxWidth: '250px'}}>
+              <RefreshCw size={18} /> 他のステージも見る
+            </button>
+          </div>
         </div>
       )}
     </div>

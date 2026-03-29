@@ -76,9 +76,23 @@ const ProfileCardMaker = () => {
             />
           </div>
           
-          <button className="btn" onClick={downloadCard} style={{marginTop: '2rem', width: '100%'}}>
-            <Download size={20} /> 画像を保存する
-          </button>
+          <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', marginTop: '2rem'}}>
+            <button className="btn" onClick={downloadCard}>
+              <Download size={20} /> 画像を保存する
+            </button>
+            <button 
+              className="btn" 
+              style={{background: '#000', color: '#fff', border: '1px solid #444'}}
+              onClick={() => {
+                const text = `SplatPartnerで自己紹介カードを作成しました！\nみんなよろしく！`;
+                const url = 'https://splat-partner.pages.dev/';
+                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=SplatPartner,スプラトゥーン3`, '_blank');
+              }}
+            >
+              𝕏 で作成報告する
+            </button>
+          </div>
+          <p style={{fontSize: '0.8rem', opacity: 0.6, marginTop: '0.5rem', textAlign: 'center'}}>※保存した画像を添付して投稿してね！</p>
         </div>
 
         <div className="preview-container">
